@@ -152,6 +152,7 @@ class AddNewTaskScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              ElevatedButton(onPressed: () {}, child: const Text("Save"))
             ],
           ),
         ),

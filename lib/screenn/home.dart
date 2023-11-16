@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:todoapp/constans/color.dart';
+import 'package:todoapp/constans/tasktype.dart';
+import 'package:todoapp/modell/task.dart';
 import 'package:todoapp/screenn/add_new_task.dart';
 import 'package:todoapp/todoitem.dart';
 
@@ -12,8 +14,40 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> todo = ["Study Lessons", "Run 5K", "Go to party"];
-  List<String> completed = ["Game meetup", "Take out", "Take out tash"];
+  // List<String> todo = ["Study Lessons", "Run 5K", "Go to party"];
+  // List<String> completed = ["Game meetup", "Take out", "Take out tash"];
+
+  List<Task> todo = [
+    Task(
+        type: TaskType.note,
+        title: "Study Lessons",
+        description: "Study COMP117",
+        isCompleted: false),
+    Task(
+        type: TaskType.note,
+        title: "Go to party",
+        description: "Attend to party",
+        isCompleted: false),
+    Task(
+        type: TaskType.note,
+        title: "Run 5K",
+        description: "Run 5 kilometers",
+        isCompleted: false),
+  ];
+
+  List<Task> completed = [
+    Task(
+        type: TaskType.note,
+        title: "Go to party",
+        description: "Attend to party",
+        isCompleted: false),
+    Task(
+        type: TaskType.note,
+        title: "Run 5K",
+        description: "Run 5 kilometers",
+        isCompleted: false),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -72,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   itemCount: todo.length,
                   itemBuilder: (context, index) {
-                    return TodoItem(title: todo[index]);
+                    return TodoItem(task: todo[index]);
                   },
                 )),
               ),
@@ -97,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       itemCount: completed.length,
                       itemBuilder: (context, index) {
-                        return TodoItem(title: completed[index]);
+                        return TodoItem(task: completed[index]);
                       })),
             ),
             ElevatedButton(
